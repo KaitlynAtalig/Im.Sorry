@@ -412,6 +412,23 @@
         }
       });
 
+      // MOBILE TAP TO SHOW MESSAGE
+      daisy.addEventListener("touchstart", () => {
+        if (!daisy.classList.contains("bloomed")) {
+          const rect = daisy.getBoundingClientRect();
+          message.style.left = (rect.left + rect.width / 2) + "px";
+          message.style.top = (rect.bottom + 10) + "px";
+          message.style.opacity = "1";
+      
+          setTimeout(() => {
+            if (!daisy.classList.contains("bloomed")) {
+              message.style.opacity = "0";
+            }
+          }, 2000); // fade after 2 seconds
+        }
+      });
+
+
       daisy.addEventListener("mouseleave", () => {
         message.style.opacity = "0";
       });
